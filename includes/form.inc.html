@@ -1,0 +1,57 @@
+
+      <section class="col-md-9 d-flex justify-content-end">
+        <form action="index.php" method="POST" >
+          <H2>Formulaire d'ajout de données</H2>
+
+            <!-- PRENOM -->
+            <div class="form-group ">
+              <label for="formGroupExampleInput">Prénom</label>
+              <input  value="" name="prenom" type="text" class="form-control" id="formGroupExampleInput" placeholder="insérez votre prénom">
+            </div>
+    
+            <!-- NOM -->
+            <div class="form-group">
+              <label for="formGroupExampleInput2">Nom</label>
+              <input value="" name="nom" type="text" class="form-control" id="formGroupExampleInput2" placeholder="insérez votre nom">
+            </div>
+    
+             <!-- AGE -->
+             <div class="form-group">
+              <label for="formGroupExampleInput2">age</label>
+              <input value="18" name="age" type="text" class="form-control" id="formGroupExampleInput2" placeholder="insérez votre age">
+            </div>
+    
+    
+            <!-- RADIO -->
+    
+            <div class="custom-control custom-radio">
+                <input  type="radio" id="customRadio1" value="apprenant" name="customRadio" class="custom-control-input">
+                <label class="custom-control-label" for="customRadio1">apprenant</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio2"  value="formateur" name="customRadio" class="custom-control-input">
+                <label name="radio" class="custom-control-label" for="customRadio2">formateur</label>
+              </div>
+ 
+              
+              <!-- TAILLE -->
+
+              <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">taille (entre 1.6 et 2m)</div>
+            
+                </div>
+                <input name="taille" type="text" class="form-control" value="1.6" id="inlineFormInputGroupUsername2" placeholder="Inserez votre taille">
+                <div class="input-group-text">m</div>
+              </div>
+              
+                 
+            <!-- BUTTON -->
+    
+            <button type="submit" class="btn btn-outline-primary ">Enregistrer des données</button>
+
+          </form>
+       
+        </section>
+    </div>
+    </div>
