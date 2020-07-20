@@ -1,5 +1,4 @@
 
-      <section class="col-md-9 d-flex justify-content-end">
         <form action="index.php" method="POST" >
           <H2>Formulaire d'ajout de données</H2>
 
@@ -18,7 +17,7 @@
              <!-- AGE -->
              <div class="form-group">
               <label for="formGroupExampleInput2">age</label>
-              <input value="18" name="age" type="text" class="form-control" id="formGroupExampleInput2" placeholder="insérez votre age">
+              <input value="18" name="age" type="number" min="18" max="60" step="1" class="form-control" id="formGroupExampleInput2" placeholder="insérez votre age">
             </div>
     
     
@@ -41,17 +40,17 @@
                   <div class="input-group-text">taille (entre 1.6 et 2m)</div>
             
                 </div>
-                <input name="taille" type="text" class="form-control" value="1.6" id="inlineFormInputGroupUsername2" placeholder="Inserez votre taille">
+                <input  name="taille" type="number" min="1.6" max="2" step="0.01" class="form-control" value="1.6" id="inlineFormInputGroupUsername2" placeholder="Inserez votre taille">
                 <div class="input-group-text">m</div>
               </div>
               
                  
             <!-- BUTTON -->
-    
+            <div class="d-flex justify-content-end">
             <button type="submit" class="btn btn-outline-primary ">Enregistrer des données</button>
-
+              </div>
           </form>
        
-        </section>
-    </div>
-    </div>
+    
+</body>
+</html>
