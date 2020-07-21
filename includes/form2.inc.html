@@ -1,0 +1,147 @@
+<form action="index.php" method="POST" >
+
+    <div class="container">
+        <div class="row">
+            <div class="card col-md-7 mx-auto my-1">
+                <div>
+
+                    
+                    <!-- INFO GLOBALE -->
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput">Prénom</label>
+                        <input value="" name="prenom" type="text" class="form-control" id="formGroupExampleInput"
+                            placeholder="insérez votre prénom">
+                    </div>
+
+                    <!-- NOM -->
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Nom</label>
+                        <input value="" name="nom" type="text" class="form-control" id="formGroupExampleInput2"
+                            placeholder="insérez votre nom">
+                    </div>
+
+                    <!-- AGE -->
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">age</label>
+                        <input value="18" name="age" type="number" min="18" max="60" step="1" class="form-control"
+                            id="formGroupExampleInput2" placeholder="insérez votre age">
+                    </div>
+
+
+                    <!-- TAILLE -->
+
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">taille (entre 1.6 et 2m)</div>
+
+                        </div>
+                        <input name="taille" type="number" min="1.6" max="2" step="0.01" class="form-control"
+                            value="1.6" id="inlineFormInputGroupUsername2" placeholder="Inserez votre taille">
+                        <div class="input-group-text">m</div>
+                    </div>
+
+
+                    <!-- RADIO -->
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="customRadio1" value="apprenant" name="customRadio"
+                            class="custom-control-input">
+                        <label class="custom-control-label" for="customRadio1">apprenant</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="customRadio2" value="formateur" name="customRadio"
+                            class="custom-control-input">
+                        <label name="radio" class="custom-control-label" for="customRadio2">formateur</label>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="card col-md-4 mx-auto my-1">
+
+
+
+                <div>
+
+                    <p>Connaissances</p>
+                    <div class="d-flex flex-column">
+                        <div>
+                            <Label>
+                                <input name="html" type="checkbox" aria-label="Checkbox for following text input">
+                                HTML
+
+                            </Label>
+                        </div>
+                        <Label>
+                            <input name="css" value="css" type="checkbox" aria-label="Checkbox for following text input">
+                            CSS
+                        </Label>
+                        <Label>
+                            <input name="bootstrap" value="bootstrap"  type="checkbox" aria-label="Checkbox for following text input">
+                            BOOTSTRAP
+                        </Label>
+                        <Label>
+                            <input name="PHP"  value="php"  type="checkbox" aria-label="Checkbox for following text input">
+                            PHP
+                        </Label>
+                        <Label>
+                            <input name="Mysql" value="Mysql"  type="checkbox" aria-label="Checkbox for following text input">
+                            MySQL
+                        </Label>
+                        <Label>
+                            <input name="javaScript" value="javascript"  type="checkbox" aria-label="Checkbox for following text input">
+                            JavaScript
+                        </Label>
+                        <Label>
+                            <input name="symfony" value="Symfony"  type="checkbox" aria-label="Checkbox for following text input">
+                            Symfony
+                        </Label>
+                    </div>
+
+                    <div>
+
+                        <div>
+                            <label for="head">couleur préférée</label>
+                            <div>
+                                <input type="color" id="head" name="head" value="#e66465">
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="head">Date de naissance</label>
+                            <div>
+                                <input type="date" id="head" name="head" value="#e66465">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="card col-11 mx-auto my-1">
+                <label for="avatar">Joindre une image (jpeg ou png)</label>
+
+                <div class="card">
+                <input type="file" 
+                       id="avatar" name="avatar"
+                       accept="image/png, image/jpeg">
+                
+
+            </div>
+            
+
+        </div>
+    </div>
+    <div class="d-flex justify-content-end">
+    <button name="form2" type="submit" class=" btn btn-primary">Enregistrer des données </button>
+</div>
+    </div>
+</form>

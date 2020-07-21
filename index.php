@@ -23,8 +23,8 @@ session_start();
 
 <div class="container">
         <div class="row ">
-            <nav class="col-sm-3 ">
-                <a href="index.php" class=" btn-block mx-2 btn btn-outline-secondary ">Home</a>
+            <nav class="col-sm-3  ">
+                <a href="index.php" class=" btn-block btn btn-outline-secondary ">Home</a>
 
                 <?php
 
@@ -46,21 +46,37 @@ session_start();
             <?php 
 
             
-            if(!empty($_SESSION)){
+            if (!empty($_SESSION)){
 
                 $table=$_SESSION['table'];
   
             }
 
-            if(isset($_GET["add"])){    
+            
+            if(isset($_GET["addmore"])){    
+
+
+                include'includes/form2.inc.html';
+                
+              
+        
+            }
+
+            elseif(isset($_GET["add"])){    
 
 
                 include'includes/form.inc.html';
-              
+             
         
-            }elseif (!empty($_POST)){
+            }
 
-     
+   
+    
+            
+            elseif (isset($_POST['form1'])){
+
+            
+ 
                 $table=[
                     "Firstname" => $_POST["prenom"],
                     "last_name" => $_POST["nom"],
@@ -73,8 +89,41 @@ session_start();
             
               echo' <h1> les données ont bien été enregistrées </h1> ';
 
-              
-                }elseif (isset($_SESSION['table'])){
+        
+                }
+                elseif(isset($_POST['form2'])){
+
+                    $table=[
+                        "Firstname" => $_POST["prenom"],
+                        "last_name" => $_POST["nom"],
+                        "situation" =>$_POST["customRadio"],
+                        "age" => $_POST["age"], 
+                        "taille" => $_POST["taille"],
+                        "html" => $_POST["html"],
+                        "css" => $_POST["css"],
+                        "bootstrap" => $_POST["bootstrap"],
+                        "PHP" => $_POST["PHP"],
+                        "Mysql" => $_POST["Mysql"],
+                        "javaScript" => $_POST["javaScript"],
+                        "symfony" => $_POST["symfony"],
+
+                        ];
+                
+                        
+                    $_SESSION['table']=$table;
+                    echo' <h1> les données ont bien été enregistrées </h1> ';
+
+                        var_dump($table);
+
+                }
+                
+                
+                
+                
+                
+                
+                elseif (isset($_SESSION['table'])){
+                 
 
                         if(isset($_GET['debogage'])){
 
@@ -155,7 +204,8 @@ session_start();
                 else{
 
                     echo'<a href="index.php?add" type="button" class="btn btn-primary">Ajouter des données</a>';
-    
+                    echo'<a href="index.php?addmore" type="button" class="btn btn-secondary mx-2">Ajouter plus de  données</a>';
+
                 }
 
          
