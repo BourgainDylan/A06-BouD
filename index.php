@@ -73,19 +73,22 @@ session_start();
    
     
             
-            elseif (isset($_POST['form1'])){
+            elseif (isset($_POST['form1'])){ 
 
-            
+                if(!empty($_POST["customRadio"])){
+                    $table["customRadio"] =  $_POST["customRadio"];
+                }
  
                 $table=[
                     "Firstname" => $_POST["prenom"],
                     "last_name" => $_POST["nom"],
-                    "situation" =>$_POST["customRadio"],
                     "age" => $_POST["age"], 
                     "taille" => $_POST["taille"]
                     ];
             
              $_SESSION['table']=$table;
+
+             var_dump($table);
             
               echo' <h1> les données ont bien été enregistrées </h1> ';
 
@@ -93,23 +96,48 @@ session_start();
                 }
                 elseif(isset($_POST['form2'])){
 
+
                     $table=[
                         "Firstname" => $_POST["prenom"],
                         "last_name" => $_POST["nom"],
-                        "situation" =>$_POST["customRadio"],
                         "age" => $_POST["age"], 
                         "taille" => $_POST["taille"],
-                        "html" => $_POST["html"],
-                        "css" => $_POST["css"],
-                        "bootstrap" => $_POST["bootstrap"],
-                        "PHP" => $_POST["PHP"],
-                        "Mysql" => $_POST["Mysql"],
-                        "javaScript" => $_POST["javaScript"],
-                        "symfony" => $_POST["symfony"],
-
-                        ];
+                        "color" => $_POST["color"],
+                        "dob" => $_POST["dob"],
                 
-                        
+                        ];
+
+                            if(!empty($_POST["customRadio"])){
+                                $table["customRadio"] =  $_POST["customRadio"];
+                            }
+
+                            if(!empty($_POST["html"])){
+                                $table["html"] =  $_POST["html"];
+                                
+                            }
+                            if(!empty($_POST["css"])){
+                                $table["css"]= $_POST["css"];
+                            }
+                            if(!empty($_POST["bootstrap"])){
+                                $table["bootstrap"]=  $_POST["bootstrap"];
+                            }
+                            if(!empty($_POST["PHP"])){
+                                $table["PHP"]= $_POST["PHP"];
+                            }
+                            if(!empty($_POST["Mysql"])){
+                                $table["Mysql"]= $_POST["Mysql"];
+                            }
+                            if(!empty($_POST["javaScript"])){
+                                $table["JavaScript"]= $_POST["javaScript"];
+                            }
+                            if(!empty($_POST["Symfony"])){
+                                $table["Symfony"]=  $_POST["Symfony"];
+
+                         
+                            }
+             
+  
+
                     $_SESSION['table']=$table;
                     echo' <h1> les données ont bien été enregistrées </h1> ';
 
