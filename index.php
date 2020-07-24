@@ -88,7 +88,7 @@ session_start();
             
              $_SESSION['table']=$table;
 
-             var_dump($table);
+
             
               echo' <h1> les données ont bien été enregistrées </h1> ';
 
@@ -135,13 +135,90 @@ session_start();
 
                          
                             }
-             
+
+
+                            if(!empty($_FILES)){
+
+
+                                $img = $_FILES['img'];
+                                $ext = strtolower(substr($img['name'],-3));
+                                $allow_ext = ["jpg", "png"];
+                                $not_Allow_Ext = ["pdf"];
+
+
+                                if(in_array($ext, $allow_ext) && $_FILES['img']['size'] <= "1999999" ) {
+
+                                    move_uploaded_file($img['tmp_name'], "uploaded/".$img['name']);
+                                
+
+                                    echo '<div class="alert alert-success" role="alert">';
+                                    echo' image enregistrée ';
+                                     echo'</div>';
+    
+                                }
+
+
+
+                                elseif(in_array($ext, $not_Allow_Ext)){
+                              
+
+                                    echo '<div class="alert alert-danger" role="alert">';
+                                    echo' format non autorisé';
+                                     echo'</div>';
+                                }
+
+
+
+
+                                elseif( $_FILES['img']['size'] > "2000000"  ){
+
+                                   
+
+                                    echo '<div class="alert alert-danger" role="alert">';
+                                    echo' taille supérieur à 2 Mo';
+                                     echo'</div>';
+                                }
+
+
+                                elseif($_FILES['img']['name'] == "") {
+
+                                    
+                    echo '<div class="alert alert-danger" role="alert">';
+                    echo' aucune image selectionnée ';
+                     echo'</div>';
+                              ;
+                                    }
+    
+                                    
+                                    
+                                else{
+                                        echo"error 1";
+                                    }
+                                    
+        
+
+                              
+
+
+                            }
+
+                      
+
+                        
+                       
+
+                        
   
 
                     $_SESSION['table']=$table;
-                    echo' <h1> les données ont bien été enregistrées </h1> ';
 
-                        var_dump($table);
+                    echo '<div class="alert alert-success" role="alert">';
+                   echo' les données ont bien été enregistrées ';
+                    echo'</div>';
+                
+                
+                            
+                 
 
                 }
                 
@@ -192,8 +269,11 @@ session_start();
                             echo'</br>';
                             echo'===> lecture d\'un tableau avec la boucle foreach';
                             echo'</br></br>';
+                            $i=0;
                         foreach( $table as $key => $value){
-                            echo' à la ligne n 0 correspond la clé '.$key.' et content '.$value.'</br>';
+                           
+                            echo' à la ligne n'.$i.' correspond la clé '.$key.' et content '.$value.'</br>';
+                            $i++;
                         }
                         
                             echo'</div>';
@@ -205,12 +285,13 @@ session_start();
                             
                             echo' ===> j\'utilise ma fonctione readtable() </br>
                             </br>';
-                        
+                           
                             function readtable($table) {
+                                $i=0;
                             foreach( $table as $key => $value){
                              
-                                echo' à la ligne n 0 correspond la clé '.$key.' et content '.$value.'</br>';
-                            
+                                echo' à la ligne n'.$i.' correspond la clé '.$key.' et content '.$value.'</br>';
+                                $i++;
                             }
                         
                             }
