@@ -5,21 +5,16 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <title>Document</title>
-</head>
+<?php
+    include'includes/head.inc.html';
+?>
 
 <body>
 
     <!-- HEADER -->
-    <div class="jumbotron ">
-        <h1 class="display-4">PHP procédural</h1>
-        <hr class="my-4">
-        <p>j'apprends et je me perfectionne</p>
-    </div>
+  <?php
+    include'includes/header.inc.html';
+  ?>
 
 <div class="container">
         <div class="row ">
@@ -34,12 +29,11 @@ session_start();
 
                 include'includes/nav.inc.html';
                 
-
             }
 
+                ?>
 
-
-?>
+                
             </nav>
             <section class=" col-sm-9 ">
 
@@ -49,25 +43,23 @@ session_start();
             if (!empty($_SESSION)){
 
                 $table=$_SESSION['table'];
+           
   
             }
 
             
             if(isset($_GET["addmore"])){    
 
-
                 include'includes/form2.inc.html';
                 
-              
         
             }
 
             elseif(isset($_GET["add"])){    
 
-
                 include'includes/form.inc.html';
              
-        
+    
             }
 
    
@@ -76,6 +68,7 @@ session_start();
             elseif (isset($_POST['form1'])){ 
 
                 if(!empty($_POST["customRadio"])){
+
                     $table["customRadio"] =  $_POST["customRadio"];
                 }
  
@@ -89,7 +82,6 @@ session_start();
              $_SESSION['table']=$table;
 
 
-            
               echo' <h1> les données ont bien été enregistrées </h1> ';
 
         
@@ -149,11 +141,9 @@ session_start();
                                 if(in_array($ext, $allow_ext) && $_FILES['img']['size'] <= "1999999" ) {
 
                                     move_uploaded_file($img['tmp_name'], "uploaded/".$img['name']);
-                                
-
                                     echo '<div class="alert alert-success" role="alert">';
                                     echo' image enregistrée ';
-                                     echo'</div>';
+                                    echo'</div>';
     
                                 }
 
@@ -172,21 +162,18 @@ session_start();
 
                                 elseif( $_FILES['img']['size'] > "2000000"  ){
 
-                                   
-
-                                    echo '<div class="alert alert-danger" role="alert">';
-                                    echo' taille supérieur à 2 Mo';
-                                     echo'</div>';
+                                echo '<div class="alert alert-danger" role="alert">';
+                                echo' taille supérieur à 2 Mo';
+                                echo'</div>';
                                 }
 
 
                                 elseif($_FILES['img']['name'] == "") {
-
-                                    
-                    echo '<div class="alert alert-danger" role="alert">';
-                    echo' aucune image selectionnée ';
-                     echo'</div>';
-                              ;
+       
+                                echo '<div class="alert alert-danger" role="alert">';
+                                echo' aucune image selectionnée ';
+                                echo'</div>';
+                                        ;
                                     }
     
                                     
@@ -194,39 +181,25 @@ session_start();
                                 else{
                                         echo"error 1";
                                     }
-                                    
-        
-
-                              
-
-
+            
                             }
 
-                      
-
-                        
-                       
-
-                        
-  
+    
 
                     $_SESSION['table']=$table;
+                    $_SESSION['table']["img"] = $img ;
+               
 
                     echo '<div class="alert alert-success" role="alert">';
-                   echo' les données ont bien été enregistrées ';
+                    echo' les données ont bien été enregistrées ';
                     echo'</div>';
                 
-                
-                            
-                 
+              
 
                 }
                 
                 
-                
-                
-                
-                
+      
                 elseif (isset($_SESSION['table'])){
                  
 
@@ -234,10 +207,10 @@ session_start();
 
                         
                             echo'<h2>Débogage</h2>';
-                            echo'===> lecture d\'un tableau avec la boucle foreach';
+                            echo'===> lecture d\'un tableau à l\'aide de la fonction print_r';
                             echo'</br> </br>' ;
                             print "<pre>";
-                            print_r ($_SESSION['table']);
+                            print_r ($table);
                             print "</pre>";
                             echo'</div>';
         
@@ -245,23 +218,25 @@ session_start();
 
                             echo'<div>';
                             echo'<h2>Concaténation</h2>';
-                            echo'</br>  ';
-                            echo' ===> construction d\'une phrase avec le contenu du tableau';
+                            echo'</br>';
+                            echo'<p> ===> construction d\'une phrase avec le contenu du tableau</p>';
                             echo'</br> </br> ';
-                            echo ' '. $_SESSION['table']['Firstname'].' '.   $_SESSION['table']["last_name"].',';
+                            echo ' <h3> '. $table['Firstname'].' '.  $table["last_name"].' </h3>';
+                            echo' </br> ';
+                            echo' '.$table['age'].' ans, je mesure ' . $table['taille'] .'m et je fais partie de la formation simplon';
                             echo'</br> </br> ';
-                            echo' '.$_SESSION['table']['age'].' ans, je mesure ' . $_SESSION['table']['taille'] .'m et je fais partie de la formation simplon';
+                            echo' <p> ===> construction d\'une phrase après maj du tableau </p>';
+                            echo' </br> ';
+                            echo '  <h3>'. ucwords($table['Firstname'] ).' '.  strtoupper ( $table["last_name"]).'</h3>';  
+                            echo' </br> ';
+                            echo' '.$table['age'].' ans, je mesure ' . $table['taille'] .'m et je fais partie de la formation simplon';
                             echo'</br> </br> ';
-                            echo' ===> construction d\'une phrase après maj du tableau';
+                            echo' <p> ===> affichage d\'une virgule à la place du point pour la taille </p>';
                             echo'</br> </br> ';
-                            echo ' '. ucwords($_SESSION['table']['Firstname'] ).' '.  strtoupper ( $_SESSION['table']["last_name"]).',';
-                            echo'</br> </br> ';
-                            echo' '.$_SESSION['table']['age'].' ans, je mesure ' . $_SESSION['table']['taille'] .'m et je fais partie de la formation simplon';
-                            echo'</br> </br> ';
-                            echo' ===> affichage d\'une virgule à la place du point pour la taille';
-                            echo'</br> </br> ';
-                            echo' ' .str_replace('.', ',', $_SESSION['table']['age'].' ans, je mesure ' .   $_SESSION['table']['taille']  .'m et je fais partie de la formation simplon' ).' ';
-                           echo'</div>';
+                            echo '  <h3>'. ucwords($table['Firstname'] ).' '.  strtoupper ( $table["last_name"]).'</h3>';  
+                          
+                            echo' ' .str_replace('.', ',', $table['age'].' ans, je mesure ' .   $table['taille']  .'m et je fais partie de la formation simplon' ).' ';
+                            echo'</div>';
                         
                         }elseif(isset($_GET['boucle'])){
                             echo'<div>';
@@ -270,12 +245,27 @@ session_start();
                             echo'===> lecture d\'un tableau avec la boucle foreach';
                             echo'</br></br>';
                             $i=0;
+
+                      
+
                         foreach( $table as $key => $value){
-                           
-                            echo' à la ligne n'.$i.' correspond la clé '.$key.' et content '.$value.'</br>';
+             
+                            if($key == "img"){
+                                echo' à la ligne n'.$i.' correspond la clé "'.$key.'" et contient : <img class = "mw-100"  src="./uploaded/'.$table['img']['name'].'">';
+                                $i++;
+                            }
+    
+                            
+                            else{
+                                echo' à la ligne n'.$i.' correspond la clé "'.$key.'" et contient '.$value.'</br>';
+                               
+                            }
                             $i++;
+
+                            
                         }
-                        
+
+                    
                             echo'</div>';
                         }elseif (isset($_GET['fonction'])){
                             echo'<div>';
@@ -285,13 +275,31 @@ session_start();
                             
                             echo' ===> j\'utilise ma fonctione readtable() </br>
                             </br>';
+
+                          
                            
                             function readtable($table) {
                                 $i=0;
-                            foreach( $table as $key => $value){
+
                              
-                                echo' à la ligne n'.$i.' correspond la clé '.$key.' et content '.$value.'</br>';
+                            foreach( $table as $key => $value){
+
+                             
+
+                                if($key == "img"){
+                                    echo' à la ligne n'.$i.' correspond la clé "'.$key.'" et contient : <img  class = "mw-100"  src="./uploaded/'.$table['img']['name'].'"</br>';
+                                    $i++;
+                                }
+        
+                                
+                                else{
+                                    echo' à la ligne n'.$i.' correspond la clé "'.$key.'" et contient '.$value.'</br>';
+                                   
+                                }
                                 $i++;
+
+                           
+                                
                             }
                         
                             }
@@ -326,7 +334,10 @@ session_start();
         </div>
 
 
-    <footer class="d-flex justify-content-center"> Dylan Bourgain- PHP </footer>
+   <?php
+        include'includes/footer.inc.html';
+
+   ?>
 
 
 </body>
